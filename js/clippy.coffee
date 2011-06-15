@@ -5,10 +5,12 @@ class Clippy
     return "_clippy#{rand}"
 
   # PUBLIC
-  constructor: (textCB, opts) ->
+  constructor: (swf, textCB, opts) ->
     uniqCB = uniqCallback()
     window[uniqCB] = () ->
       textCB()
+
+    @swf = swf
 
     # Get the opts
     opts or= {}
@@ -27,13 +29,13 @@ class Clippy
         width='110'
         height='14'
         id='clippy' >
-<param name='movie' value='clippy.swf'/>
+<param name='movie' value='#{@swf}'/>
 <param name='allowScriptAccess' value='always' />
 <param name='quality' value='high' />
 <param name='scale' value='noscale' />
 <param NAME='FlashVars' value='#{@flashParams}'>
 <param name='bgcolor' value='#{@bgColor}'>
-<embed src='clippy.swf'
+<embed src='#{@swf}'
        width='110'
        height='14'
        name='clippy'
@@ -42,8 +44,8 @@ class Clippy
        type='application/x-shockwave-flash'
        pluginspage='http://www.macromedia.com/go/getflashplayer'
        FlashVars='#{@flashParams}'
-       bgcolor='#{@bgColor}'
-/>
+       bgcolor='#{@bgColor}'/>
+</object>
 """
 
 # Export namespace
