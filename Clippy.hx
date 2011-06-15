@@ -49,12 +49,10 @@ class Clippy {
     defaultLabelText = flash.Lib.current.loaderInfo.parameters.label;
     feedbackLabelText = flash.Lib.current.loaderInfo.parameters.feedback;
     
-    if(defaultLabelText == null)
-    {
+    if(defaultLabelText == null) {
       defaultLabelText = "copy to clipboard";
     }
-    if(feedbackLabelText == null)
-    {
+    if(feedbackLabelText == null) {
       feedbackLabelText = "copied!";
     }
     
